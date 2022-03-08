@@ -27,7 +27,9 @@ const AuthView: React.FC = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <Button>Login</Button>
+                <Button onClick={() => authStore.login({ email, password })}>
+                    Login
+                </Button>
             </div>
         </Dialog>
     );
