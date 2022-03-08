@@ -7,6 +7,7 @@ export class AuthStore {
 
     constructor(private readonly AuthService: AuthService) {
         makeAutoObservable(this);
+        this.authenticated = !!this.getAccessToken();
     }
 
     async login(loginRequest: LoginRequest) {
@@ -21,6 +22,10 @@ export class AuthStore {
 
     private setAuthenticated(authenticated: boolean) {
         this.authenticated = authenticated;
+    }
+
+    getAccessToken() {
+        return localStorage.getItem('access_token');
     }
 
     isAuthenticated() {
